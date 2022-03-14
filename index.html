@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
+
+  <!-- My CSS & JS -->
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <title>Calculator app</title>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h2 class="logo">calc</h2>
+      <div class="theme-toggle">
+        <h4>Theme</h4>
+        <div>
+          <div class="theme-numbers">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+          </div>
+          <div class='switch-wrapper' data-switch-wrapper>
+            <div class='switch'>
+              <input id='inactive' class='switch__input' type='radio' name='email-preference' data-state='inactive'
+                data-switch-input checked />
+
+              <input id='no-preference' class='switch__input' type='radio' name='email-preference' data-switch-input />
+
+              <input id='active' class='switch__input' type='radio' name='email-preference' data-state='active'
+                data-switch-input />
+
+              <span class='switch__pill' data-switch-pill></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="screen">0</section>
+    <section class="button-grid">
+      <button class="default" value="7"></button>
+      <button class="default" value="8"></button>
+      <button class="default" value="9"></button>
+      <button class="del-reset" onclick="del()">DEL</button>
+      <button class="default" value="4"></button>
+      <button class="default" value="5"></button>
+      <button class="default" value="6"></button>
+      <button class="default" onclick="add()">+</button>
+      <button class="default" value="1"></button>
+      <button class="default" value="2"></button>
+      <button class="default" value="3"></button>
+      <button class="default" onclick="subtract()">-</button>
+      <button class="default" onclick="decimal()">.</button>
+      <button class="default" value="0"></button>
+      <button class="default" onclick="divide()">/</button>
+      <button class="default" onclick="multiply()">x</button>
+      <button class="del-reset wide" onclick="reset()">RESET</button>
+      <button class="equals" onclick="equals()">=</button>
+    </section>
+  </main>
+</body>
+
+</html>
