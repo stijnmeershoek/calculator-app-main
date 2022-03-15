@@ -69,11 +69,31 @@ function reset() {
 
 function del() {
   if (editingSecondary) {
-    secondaryNumber = checkDecimalPlaces(secondaryNumber).toString().slice(0, -1);
-    screen.textContent = checkDecimalPlaces(Number(secondaryNumber));
+    if (secondaryNumber.toString().length === 2 && secondaryNumber.toString().startsWith("-")) {
+      secondaryNumber = 0;
+      screen.textContent = 0;
+      return;
+    }
+    if (secondaryNumber.toString().startsWith("-")) {
+      secondaryNumber = `-${checkDecimalPlaces(secondaryNumber.toString().slice(1)).toString().slice(0, -1)}`;
+      screen.textContent = Number(secondaryNumber);
+    } else {
+      secondaryNumber = checkDecimalPlaces(secondaryNumber).toString().slice(0, -1);
+      screen.textContent = Number(secondaryNumber);
+    }
   } else {
-    currentNumber = checkDecimalPlaces(currentNumber).toString().slice(0, -1);
-    screen.textContent = checkDecimalPlaces(Number(currentNumber));
+    if (currentNumber.toString().length === 2 && currentNumber.toString().startsWith("-")) {
+      currentNumber = 0;
+      screen.textContent = 0;
+      return;
+    }
+    if (currentNumber.toString().startsWith("-")) {
+      currentNumber = `-${checkDecimalPlaces(currentNumber.toString().slice(1)).toString().slice(0, -1)}`;
+      screen.textContent = Number(currentNumber);
+    } else {
+      currentNumber = checkDecimalPlaces(currentNumber).toString().slice(0, -1);
+      screen.textContent = Number(currentNumber);
+    }
   }
 }
 
@@ -107,9 +127,15 @@ function Switch() {
 }
 
 function decimal() {
-  if (currentNumber.toString().includes(".")) return;
-  currentNumber = `${Number(currentNumber)}.`;
-  screen.textContent = currentNumber;
+  if (editingSecondary) {
+    if (secondaryNumber.toString().includes(".")) return;
+    secondaryNumber = `${Number(secondaryNumber)}.`;
+    screen.textContent = secondaryNumber;
+  } else {
+    if (currentNumber.toString().includes(".")) return;
+    currentNumber = `${Number(currentNumber)}.`;
+    screen.textContent = currentNumber;
+  }
 }
 
 function checkDecimalPlaces(number) {
